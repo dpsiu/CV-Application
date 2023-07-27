@@ -1,10 +1,7 @@
 import { useState } from 'react'
-import DatePicker from 'react-date-picker'
 import './App.css'
 
-
 export default function App() {
-
 
   return (
     <>
@@ -46,9 +43,15 @@ export default function App() {
           <label htmlFor="gpa">GPA</label>
           <input type="text" name="gpa" id="gpa"/>
         </div>
-        <div className="form-row">
-          <label htmlFor="startDate">Start Date</label>
-          <input type="text" name="startDate" id="startDate"/>
+        <div className="dates">
+          <div className="form-row">
+            <label htmlFor="startDate">Start</label>
+            <input type="text" name="startDate" id="startDate"/>
+          </div>
+          <div className="form-row">
+            <label htmlFor="endDate">End</label>
+            <input type="text" name="endDate" id="endDate"/>
+          </div>
         </div>
         <div className="buttons">
           <button className='delete-education deleteBtn'>Delete</button>
@@ -65,15 +68,15 @@ export default function App() {
           <label htmlFor="position">Position</label>
           <input type="text" name="position" id="position"/>
         </div>
-        <div className="form-row">
-          <label htmlFor="startDate">Start Date</label>
-          <input type="text" name="startDate" id="startDate"/>
-        </div>
-        <div>
-        </div>
-        <div className="form-row">
-          <label htmlFor="endDate">End Date</label>
-          <input type="text" name="endDate" id="endDate"/>
+        <div className="dates">
+          <div className="form-row">
+            <label htmlFor="startDate">Start</label>
+            <input type="text" name="startDate" id="startDate"/>
+          </div>
+          <div className="form-row">
+            <label htmlFor="endDate">End</label>
+            <input type="text" name="endDate" id="endDate"/>
+          </div>
         </div>
         <div className="buttons">
           <button className='delete-education deleteBtn'>Delete</button>

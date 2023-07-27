@@ -52,7 +52,7 @@ form {
 
 .form-row {
   margin: .4rem .2rem;
-  padding: 0px .2rem;
+  padding: 0px .0rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -62,7 +62,7 @@ form {
 
 form label{
   margin-right: 1rem;
-  min-width: 100px;
+  min-width: fit-content;
 }
 
 form input{
@@ -73,7 +73,6 @@ form input{
   color: var(--color-light);
   width: 70%;
   letter-spacing: 1px;
-  min-width: 320px;
 }
 
 input:focus {
@@ -107,6 +106,24 @@ button {
 
 button:hover {
   background-color: var(--color-main);
+}
+
+.dates {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.dates .form-row {
+  width: fit-content;
+}
+
+.dates label{
+  margin-right: 1.5rem;
+}
+
+.dates input {
+  max-width: 130px;
 }
 
 @media (prefers-color-scheme: light) {
