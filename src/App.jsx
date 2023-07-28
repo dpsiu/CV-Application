@@ -80,21 +80,48 @@ export default function App() {
         </div>
         <div className="buttons">
           <button className='delete-education deleteBtn'>Delete</button>
-          <button className='add-education addBtn'>Add</button>
+          <button className='add-experience addBtn'>Add</button>
         </div>
       </form>
-      <form action="">
+      <form action="" className='skillsForm'>
         <h2>Skills</h2>
         <div className="form-row">
+          <label htmlFor="category">Category</label>
+          <input type="text" name="category" id="category"/>
+          <img src="./icons/plus.svg" alt="" />
+        </div>
+        <div className="form-row skillsRow" >
           <label htmlFor="skill">Skill</label>
           <input type="text" name="skill" id="skill"/>
+          <img src="./icons/plus.svg" alt="" />
         </div>
-        <div className="buttons">
-          <button className='delete-education deleteBtn'>Delete</button>
-          <button className='add-education addBtn'>Add</button>
+        <div className="categoryList list">
+          <h3>Category</h3>
+          <div className="categoryListItem">
+            <div>Adobe PS</div>
+            <img src="./icons/close.svg" alt="" />
+          </div>
+          <div className="categoryListItem">
+            <div>Javascript</div>
+            <img src="./icons/close.svg" alt="" />
+          </div>
+        </div>
+        <div className="skillsList list">
+          <h3>Skills</h3>
+          <div className="skillsListItem">
+            <div>Adobe PS</div>
+            <img src="./icons/close.svg" alt="" />
+          </div>
+          <div className="skillsListItem">
+            <div>Javascript</div>
+            <img src="./icons/close.svg" alt="" />
+          </div>
+          <div className="skillsListItem">
+            <div>React</div>
+            <img src="./icons/close.svg" alt="" />
+          </div>
         </div>
       </form>
-
     </>
   )
 }

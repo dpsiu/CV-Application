@@ -11,6 +11,7 @@
   --color-grey: rgb(97, 97, 97);
   --color-main: #44ab7f;
   --color-main-light: #3a7c60;
+  --color-red: #ab4444;
 }
 
 body {
@@ -86,25 +87,39 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  /* text-align: center; */
   width: 100%;
   padding: .4rem;
   margin-top: 2rem;
 }
 
 button {
-  background-color:var(--color-main-light);
-  border: none;
+  display: flex;
+  justify-content: center;
+  width: 180px;
+  border: rgba(0, 0, 0, 0) 2px solid;
   border-radius: .3rem;
   letter-spacing: .1rem;
   font-size: 1rem;
-  padding: .6rem 1rem;
-  margin: 0rem 2rem;
+  padding: .6rem 15%;
+  margin: 0rem 1rem;
 
   color: var(--color-light);
 }
 
-button:hover {
+.deleteBtn {
+  background-color: var(--color-dark);
+  border: var(--color-red) 2px solid;
+}
+
+.deleteBtn:hover {
+  background-color: var(--color-red);
+}
+.addBtn {
+  background-color: var(--color-dark);
+  border: var(--color-main) 2px solid;
+}
+.addBtn:hover {
   background-color: var(--color-main);
 }
 
@@ -119,12 +134,79 @@ button:hover {
 }
 
 .dates label{
-  margin-right: 1.5rem;
+  margin: 0px 1rem
 }
 
 .dates input {
   max-width: 130px;
 }
+
+/* Skills */
+
+.form-row img {
+  width: 2rem;
+  border-radius: .4rem;
+  background-color: var(--color-main-light);
+  margin: 0px 1rem;
+}
+
+.form-row img:hover {
+  background-color: var(--color-main);
+}
+
+.skillsRow {
+  max-width: 75%;
+  align-self: center;
+}
+
+
+.skillsList,
+.categoryList {
+  display: flex;
+  align-self: center;
+  flex-wrap: wrap;
+  max-width: inherit;
+  border: var(--color-main-light) 2px solid;
+  border-radius: .4rem;
+  width: 100%;
+  padding: .5rem;
+  margin-top: 1rem;
+}
+
+/* Category + adds Categories. Show category list. */
+/* Skills + adds Skills. Show skills list.  */
+/* Cat/Skills can be edited in the cat/skills list respectively */
+/* Will change dynamically on preview. */
+
+.skillsList h3,
+.categoryList h3 {
+  width: 100%;
+  margin: 1rem;
+}
+.skillsListItem,
+.categoryListItem {
+  display: flex;
+  align-items: center;
+  border-radius: .5rem;
+  background-color: var(--color-main-light);
+  padding: .5rem 1rem;
+  margin: .5rem;
+  letter-spacing: normal;
+}
+.skillsListItem img,
+.categoryListItem img{
+  height: 1.5rem;
+  filter: invert(100%);
+  margin-left: 1rem;
+  border: rgba(0, 0, 0, 0) 2px solid;
+  border-radius: .4rem;
+}
+
+.skillsListItem, 
+.categoryListItem img:hover {
+  border: var(--color-dark) 2px solid;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {
