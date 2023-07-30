@@ -7,7 +7,7 @@
   color: rgba(255, 255, 255, 0.87);
   --color-light: white;
   --color-dark:rgb(53, 53, 53);
-  --color-dark-medium:rgb(79, 79, 79);
+  --color-dark-medium:rgb(77, 77, 77);
   --color-grey: rgb(97, 97, 97);
   --color-main: #3b946d;
   --color-main-light: #3a7c60;
@@ -17,7 +17,7 @@
 body {
   margin: 0;
   padding: 0;
-  line-height: 30px;
+  line-height: 2rem;
   letter-spacing: 1px;
   color: var(--color-light);
   background-color: var(--color-grey);
@@ -124,10 +124,9 @@ button {
   background-color: var(--color-main);
 }
 
+
 .dates {
   display: flex;
-  justify-content: space-evenly;
-  width: 100%;
 }
 
 .dates .form-row {
@@ -213,7 +212,7 @@ button {
 .application {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-gap: 2rem;
+  grid-gap: 3rem;
 
 }
 
@@ -231,7 +230,7 @@ button {
 }
 
 .cvPreview {
-  color: var(--color-dark-medium);
+  color: var(--color-grey);
 
   padding: 3rem;
   background-color: var(--color-light);
@@ -242,9 +241,9 @@ button {
   height: 880px;
 
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr 1fr 3fr;
-  grid-gap: 2rem;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr 1fr 34fr;
+  grid-gap: 1rem;
 }
 
 /* Bio preview */
@@ -265,8 +264,8 @@ button {
 }
 
 .nameTitle h1 {
-  margin: 1rem 0px;
-  font-size: 3rem;
+  margin: .5rem 0px;
+  font-size: 2.5rem;
   font-weight: 600;
   background-color:var(--color-light);
   letter-spacing: 6px;
@@ -275,7 +274,8 @@ button {
 .nameTitle h2 {
   color: var(--color-dark-medium);
   letter-spacing: 4px;
-  font-weight: 500;
+  font-weight: 400;
+  margin: 0px;
 }
 
 .contactInfo {
@@ -287,23 +287,80 @@ button {
 }
 
 .contactInfo p {
-  margin: 1px 0px;
-
+  margin: 0px;
+  font-size: .9rem;
+  line-height: 1.4rem;
 }
+
+/* Education Preview */
 
 .educationPreview{
   grid-column: 1/2;
   grid-row: 2/3;
 }
 
+.dateInfo {
+  display: flex;
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-size: .9rem;
+}
+
+.cvPreview h3 {
+  letter-spacing: 4px;
+  color: var(--color-main);
+  font-size: 1.2rem;
+  margin: .5rem 0rem;
+}
+
+.subtitle {
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: .9rem;
+}
+
+/* .degree {
+  margin: 0px .5rem;
+} */
+
+.startDate,
+.endDate,
+.dates {
+  margin: 0rem .4rem;
+}
+
+.cvPreview ul {
+  padding-left: 1.2rem;
+  margin: .5rem 0rem;
+}
+
+.cvPreview li {
+  font-size: .8rem;
+  line-height: 1.2rem;
+  margin: 4px 0px;
+}
+
 .experiencePreview {
   grid-column: 1/2;
   grid-row: 3/4;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .skillsPreview {
   grid-column: 2/3;
   grid-row: 2/4;
+}
+
+.skillsItem li {
+  margin: 6px 0px;
+}
+
+.skillsItem .subtitle {
+  margin-top: 1rem;
 }
 
 

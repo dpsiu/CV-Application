@@ -139,48 +139,101 @@ export default function App() {
               </div>
             </div>
             <div className='educationPreview'>
-              <h3>Education</h3>
+              <h3>EDUCATION</h3>
               <div className="educationItem">
-                <div className="school">The University of Texas at Dallas</div>
-                <div className="dateAndTitle">
-                  <div className="degree">Bachelor of Arts</div>
+                <div className="subtitle">THE UNIVERSITY OF TEXAS AT DALLAS</div>
+                <div className="dateInfo">
+                  <div className="degree">B.A. INTERACTION DESIGN |</div>
                   <div className="dates">
                     <div className="startDate">2018</div>
+                    <div> - </div>
                     <div className="endDate">2020</div>
                   </div>
                 </div>
+                <ul>
+                  <li className="gpa">GPA: 3.8 Magna Cum Laude</li>
+                </ul>
               </div>
             </div>
             <div className='experiencePreview'>
-              <h3>Experience</h3>
+              <h3>EXPERIENCE</h3>
               <div className="experienceItem">
-                <div className="company">Akamai Innovations</div>
-                <div className="dateAndTitle">
-                  <div className="position">Web Designer</div>
+                <div className="subtitle">AKAMAI INNOVATIONS</div>
+                <div className="dateInfo">
+                  <div className="position">WEB DESIGNER |</div>
                   <div className="dates">
-                    <div className="startDate">June 2022</div>
-                    <div className="endDate">Present</div>
+                    <div className="startDate">JUN 2022</div>
+                    <div> - </div>
+                    <div className="endDate">PRESENT</div>
                   </div>
                 </div>
                 <ul>
-                  <li>Lorem Ipsum is simply dummy text of the printing 
-                    and typesetting industry. Lorem Ipsum has been the industry's 
-                    standard dummy text ever since the 1500s, when an unknown printer 
-                    took a galley of type and scrambled it to make a type specimen book. 
-                    It has survived not only five centuries, but also the leap into 
-                    electronic typesetting, remaining essentially unchanged.</li>
+                  <li>Participate in cross-functional product development
+                     with a team of 4 to deliver 10+ doctor client sites.</li>
+                  <li>Collaborate with web developer to create an internal
+                    tool to improve collaboration and efficiency in worklflows.
+                  </li>
+                </ul>
+              </div>
+              <div className="experienceItem">
+                <div className="subtitle">FOODMAGNET</div>
+                <div className="dateInfo">
+                  <div className="position">UX DESIGNER |</div>
+                  <div className="dates">
+                    <div className="startDate">JAN 2022</div>
+                    <div> - </div>
+                    <div className="endDate">NOV 2022</div>
+                  </div>
+                </div>
+                <ul>
+                  <li>Design the internal administration tool and 
+                    customer-facing application</li>
+                  <li>Build a robust, data heavy CRM by creating a cohesive system
+                    across two external systems.
+                  </li>
+                  <li>
+                    Streamline and optimize workflows for product and design utilizing
+                    reasearch, wireframes, and mockups.
+                  </li>
+                </ul>
+              </div>
+              <div className="experienceItem">
+                <div className="subtitle">PROJKET202</div>
+                <div className="dateInfo">
+                  <div className="position">UX EXTERN |</div>
+                  <div className="dates">
+                    <div className="startDate">MAR 202</div>
+                  </div>
+                </div>
+                <ul>
+                  <li>One of 3 students chosen from UTD to shadow UX 
+                    designers from Projekt202 in a week-long externship
+                    over spring break.
+                  </li>
                 </ul>
               </div>
             </div>
             <div className='skillsPreview'>
-              <h3>Skills</h3>
-              <h4 className="categoryPreview">Languages</h4>
-              <ul className='listItems'>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>Javascript</li>
-                <li>React</li>
-              </ul>
+              <h3>SKILLS</h3>
+              <div className="skillsItem">
+                <div className="subtitle">LANGUAGES</div>
+                <ul className='listItems'>
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>Javascript</li>
+                  <li>React</li>
+                </ul>
+              </div>
+              <div className="skillsItem">
+                <div className="subtitle">DESIGN</div>
+                <ul className='listItems'>
+                  <li>User Interviews</li>
+                  <li>Interaction Design</li>
+                  <li>User Centered Design</li>
+                  <li>Wireframing</li>
+                  <li>User Research</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
