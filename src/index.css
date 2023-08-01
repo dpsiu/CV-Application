@@ -9,6 +9,7 @@
   --color-dark:rgb(53, 53, 53);
   --color-dark-medium:rgb(77, 77, 77);
   --color-grey: rgb(97, 97, 97);
+  --color-light-placeholder: rgb(204, 204, 204);
   --color-main: #3b946d;
   --color-main-light: #3a7c60;
   --color-red: #ab4444;
@@ -24,12 +25,20 @@ body {
   width: 100%;
 }
 
+.editor {
+  overflow-y: auto;
+  height: 1150px;
+  width: fit-content;
+}
+
 h1 {
   font-size: 2.2em;
   color: var(--color-main);
   line-height: 1.1;
   background-color: var(--color-dark);
   margin: 1rem;
+
+  text-overflow: clip;
 }
 
 form h2 {
@@ -67,7 +76,8 @@ form label{
   min-width: fit-content;
 }
 
-form input{
+form input,
+#description {
   border-radius: .3rem;
   border: var(--color-grey) 2px solid;
   background-color: var(--color-grey);
@@ -75,9 +85,11 @@ form input{
   color: var(--color-light);
   width: 70%;
   letter-spacing: 1px;
+  resize: none;
 }
 
-input:focus {
+input:focus,
+#description:focus {
   outline: none;
   color: var(--color-light);
   border: var(--color-main) 2px solid;
@@ -261,6 +273,8 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  overflow: hidden;
 }
 
 .nameTitle h1 {
@@ -269,6 +283,12 @@ button {
   font-weight: 600;
   background-color:var(--color-light);
   letter-spacing: 6px;
+
+  /* overflow: hidden; */
+  /* white-space: nowrap; */
+  /* text-overflow: clip; */
+  /* text-overflow: clip;
+  transition: font-size 0.3s; */
 }
 
 .nameTitle h2 {
@@ -338,6 +358,7 @@ button {
   font-size: .8rem;
   line-height: 1.2rem;
   margin: 4px 0px;
+  flex-wrap: wrap;
 }
 
 .experiencePreview {
@@ -346,9 +367,26 @@ button {
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content:baseline;
   flex-wrap: wrap;
 }
+
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: baseline;
+}
+
+#description {
+  width: 97%;
+}
+
+#description::placeholder {
+  color: var(--color-light-placeholder);
+}
+
+
 
 .skillsPreview {
   grid-column: 2/3;

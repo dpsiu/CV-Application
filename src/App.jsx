@@ -2,6 +2,29 @@ import { useState } from 'react'
 import './App.css'
 
 export default function App() {
+  const [fullName, setFullName] = useState('Name')
+  const [occupation, setOccupation] = useState('Occupation')
+  const [email, setEmail] = useState('Email')
+  const [website, setWebsite] = useState('Website')
+  const [phone, setPhone] = useState('Phone') 
+
+  const [school, setSchool] = useState('School')
+  const [degree, setDegree] = useState('Degree')
+  const [startDate, setStartDate] = useState('Start Date')
+  const [endDate, setEndDate] = useState('End Date')
+  const [description, setDescription] = useState('Description')
+
+  const [company, setCompany] = useState('Company')
+  const [position, setPosition] = useState('Position')
+  const [startDate2, setStartDate2] = useState('Start Date')
+  const [endDate2, setEndDate2] = useState('End Date')
+  const [description1, setDescription1] = useState('Description')
+  const [description2, setDescription2] = useState('Description')
+  const [description3, setDescription3] = useState('Description')
+
+  function handleEducationSubmit(e) {
+    e.preventDefault()
+  }
 
   return (
     <>
@@ -11,74 +34,94 @@ export default function App() {
           <form className='new-bio'>
             <h2>Personal Information</h2>
             <div className="form-row">
-              <label htmlFor="firstName">First Name</label>
-              <input type="text" name="firstName" id="firstName"/>
-            </div>
-            <div className="form-row">
-              <label htmlFor="lastName">Last Name</label>
-              <input type="text" name="lastName" id="lastName"/>
+              <label htmlFor="fullName">Full Name</label>
+              <input maxLength={20} onChange={e => setFullName(e.target.value)} type="text" name="fullName" id="fullName"/>
             </div>
             <div className="form-row">
               <label htmlFor="occupation">Occupation</label>
-              <input type="text" name="occupation" id="occupation"/>
+              <input maxLength={25} onChange={e => setOccupation(e.target.value)} type="text" name="occupation" id="occupation"/>
             </div>
             <div className="form-row">
               <label htmlFor="email">Email</label>
-              <input type="text" name="email" id="email"/>
+              <input onChange={e => setEmail(e.target.value)} type="email" name="email" id="email"/>
+            </div>
+            <div className="form-row">
+              <label htmlFor="website">Website</label>
+              <input onChange={e => setWebsite(e.target.value)} type="url" name="website" id="website"/>
             </div>
             <div className="form-row">
               <label htmlFor="phone">Phone</label>
-              <input type="text" name="phone" id="phone"/>
+              <input onChange={e => setPhone(e.target.value)} type="tel" name="phone" id="phone"/>
             </div>
           </form>
-          <form action="">
+          <form action="" className='education' onSubmit={handleEducationSubmit}>
             <h2>Education</h2>
             <div className="form-row">
-              <label htmlFor="school">School</label>
-              <input type="text" name="school" id="school"/>
+              <label htmlFor="school">University</label>
+              <input onChange={e => setSchool(e.target.value)} type="text" name="school" id="school"/>
             </div>
             <div className="form-row">
               <label htmlFor="degree">Degree</label>
-              <input type="text" name="degree" id="degree"/>
+              <input onChange={e => setSchool(e.target.value)} type="text" name="degree" id="degree"/>
             </div>
-            <div className="form-row">
+            {/* <div className="form-row">
               <label htmlFor="gpa">GPA</label>
               <input type="text" name="gpa" id="gpa"/>
-            </div>
+            </div> */}
             <div className="dates">
               <div className="form-row">
                 <label htmlFor="startDate">Start</label>
-                <input type="text" name="startDate" id="startDate"/>
+                <input onChange={e => setStartDate(e.target.value)} type="text" name="startDate" id="startDate"/>
               </div>
               <div className="form-row">
                 <label htmlFor="endDate">End</label>
-                <input type="text" name="endDate" id="endDate"/>
+                <input onChange={e => setEndDate(e.target.value)} type="text" name="endDate" id="endDate"/>
               </div>
+            </div>
+            <div className="form-row description">
+              <label htmlFor="description">Description</label>
+              <textarea onChange={e => setDescription(e.target.value)} placeholder='List any significant accomplishments.'
+               rows={8} name="description" id="description"/>
             </div>
             <div className="buttons">
               <button className='delete-education deleteBtn'>Delete</button>
               <button className='add-education addBtn'>Add</button>
             </div>
           </form>
-          <form action="">
+          <form action="" className='experience'>
             <h2>Experience</h2>
             <div className="form-row">
               <label htmlFor="company">Company</label>
-              <input type="text" name="company" id="company"/>
+              <input onChange={e => setCompany(e.target.value)} type="text" name="company" id="company"/>
             </div>
             <div className="form-row">
               <label htmlFor="position">Position</label>
-              <input type="text" name="position" id="position"/>
+              <input onChange={e => setPosition(e.target.value)} type="text" name="position" id="position"/>
             </div>
             <div className="dates">
               <div className="form-row">
                 <label htmlFor="startDate">Start</label>
-                <input type="text" name="startDate" id="startDate"/>
+                <input onChange={e => setStartDate2(e.target.value)} type="text" name="startDate" id="startDate"/>
               </div>
               <div className="form-row">
                 <label htmlFor="endDate">End</label>
-                <input type="text" name="endDate" id="endDate"/>
+                <input onChange={e => setEndDate2(e.target.value)} type="text" name="endDate" id="endDate"/>
               </div>
+            </div>
+            <div className="form-row description">
+              <label htmlFor="description">Description - List duties & accomplishments.</label>
+              <textarea onChange={e => setDescription1(e.target.value)} placeholder='Bullet 1'
+               rows={4} name="description" id="description"/>
+            </div>
+            <div className="form-row description">
+              <label htmlFor="description"></label>
+              <textarea onChange={e => setDescription2(e.target.value)} placeholder='Bullet 2'
+               rows={4} name="description" id="description"/>
+            </div>
+            <div className="form-row description">
+              <label htmlFor="description"></label>
+              <textarea onChange={e => setDescription3(e.target.value)} placeholder='Bullet 3'
+               rows={4} name="description" id="description"/>
             </div>
             <div className="buttons">
               <button className='delete-education deleteBtn'>Delete</button>
@@ -129,50 +172,48 @@ export default function App() {
           <div className="cvPreview">
             <div className="bioPreview">
               <div className="nameTitle">
-                <h1>Denver Siu</h1>
-                <h2>Software Developer</h2>
+                <h1 >{fullName}</h1>
+                <h2>{occupation}</h2>
               </div>
               <div className="contactInfo">
-                <p>www.denversiu.com</p>
-                <p>denversiu24@gmail.com</p>
-                <p>512 363 6913</p>
+                <p>{email}</p>
+                <p>{website}</p>
+                <p>{phone}</p>
               </div>
             </div>
             <div className='educationPreview'>
               <h3>EDUCATION</h3>
               <div className="educationItem">
-                <div className="subtitle">THE UNIVERSITY OF TEXAS AT DALLAS</div>
+                <div className="subtitle">{school}</div>
                 <div className="dateInfo">
-                  <div className="degree">B.A. INTERACTION DESIGN |</div>
+                  <div className="degree">{degree} |</div>
                   <div className="dates">
-                    <div className="startDate">2018</div>
+                    <div className="startDate">{startDate}</div>
                     <div> - </div>
-                    <div className="endDate">2020</div>
+                    <div className="endDate">{endDate}</div>
                   </div>
                 </div>
                 <ul>
-                  <li className="gpa">GPA: 3.8 Magna Cum Laude</li>
+                  <li className="gpa">{description}</li>
                 </ul>
               </div>
             </div>
             <div className='experiencePreview'>
               <h3>EXPERIENCE</h3>
               <div className="experienceItem">
-                <div className="subtitle">AKAMAI INNOVATIONS</div>
+                <div className="subtitle">{company}</div>
                 <div className="dateInfo">
-                  <div className="position">WEB DESIGNER |</div>
+                  <div className="position">{position} |</div>
                   <div className="dates">
-                    <div className="startDate">JUN 2022</div>
+                    <div className="startDate">{startDate2}</div>
                     <div> - </div>
-                    <div className="endDate">PRESENT</div>
+                    <div className="endDate">{endDate2}</div>
                   </div>
                 </div>
                 <ul>
-                  <li>Participate in cross-functional product development
-                     with a team of 4 to deliver 10+ doctor client sites.</li>
-                  <li>Collaborate with web developer to create an internal
-                    tool to improve collaboration and efficiency in worklflows.
-                  </li>
+                  <li>{description1}</li>
+                  <li>{description2}</li>
+                  <li>{description3}</li>
                 </ul>
               </div>
               <div className="experienceItem">
