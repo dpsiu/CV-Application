@@ -339,6 +339,10 @@ button {
   font-size: .9rem;
 }
 
+img .form-row:focus {
+  border: blue solid 2px;
+}
+
 /* .degree {
   margin: 0px .5rem;
 } */
@@ -393,11 +397,11 @@ button {
   grid-row: 2/4;
 }
 
-.skillsItem li {
+.skillsPreview li {
   margin: 6px 0px;
 }
 
-.skillsItem .subtitle {
+.skillsPreview .subtitle {
   margin-top: 1rem;
 }
 

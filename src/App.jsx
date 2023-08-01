@@ -8,23 +8,35 @@ export default function App() {
   const [website, setWebsite] = useState('Website')
   const [phone, setPhone] = useState('Phone') 
 
-  const [school, setSchool] = useState('School')
-  const [degree, setDegree] = useState('Degree')
+  const [school, setSchool] = useState('SCHOOL')
+  const [degree, setDegree] = useState('DEGREE')
   const [startDate, setStartDate] = useState('Start Date')
   const [endDate, setEndDate] = useState('End Date')
   const [description, setDescription] = useState('Description')
 
-  const [company, setCompany] = useState('Company')
-  const [position, setPosition] = useState('Position')
+  const [company, setCompany] = useState('COMPANY')
+  const [position, setPosition] = useState('POSITION')
   const [startDate2, setStartDate2] = useState('Start Date')
   const [endDate2, setEndDate2] = useState('End Date')
   const [description1, setDescription1] = useState('Description')
   const [description2, setDescription2] = useState('Description')
   const [description3, setDescription3] = useState('Description')
 
-  function handleEducationSubmit(e) {
-    e.preventDefault()
+  const [newCategory, setNewCategory] = useState('')
+  const [categories, setCategories] = useState([])
+
+  function handleCategoryAdd(e) {
+    // e.preventDefault()
+
+    setCategories((currentCategories) => {
+      return [
+        ...currentCategories, 
+        {title: newCategory, id: 12783}
+      ]
+    })
   }
+
+console.log(categories)
 
   return (
     <>
@@ -54,7 +66,7 @@ export default function App() {
               <input onChange={e => setPhone(e.target.value)} type="tel" name="phone" id="phone"/>
             </div>
           </form>
-          <form action="" className='education' onSubmit={handleEducationSubmit}>
+          <form action="" className='education'>
             <h2>Education</h2>
             <div className="form-row">
               <label htmlFor="school">University</label>
@@ -132,8 +144,8 @@ export default function App() {
             <h2>Skills</h2>
             <div className="form-row">
               <label htmlFor="category">Category</label>
-              <input type="text" name="category" id="category"/>
-              <img src="./icons/plus.svg" alt="" />
+              <input value={newCategory} onChange={e => setNewCategory(e.target.value)} type="text" name="category" id="category"/>
+              <img src="./icons/plus.svg" alt="" onClick={handleCategoryAdd}/>
             </div>
             <div className="form-row skillsRow" >
               <label htmlFor="skill">Skill</label>
@@ -256,25 +268,27 @@ export default function App() {
             </div>
             <div className='skillsPreview'>
               <h3>SKILLS</h3>
-              <div className="skillsItem">
-                <div className="subtitle">LANGUAGES</div>
-                <ul className='listItems'>
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>Javascript</li>
-                  <li>React</li>
-                </ul>
+              {categories.map(category => {
+                return <div className="subtitle">
+                {category.title}
               </div>
-              <div className="skillsItem">
-                <div className="subtitle">DESIGN</div>
-                <ul className='listItems'>
-                  <li>User Interviews</li>
-                  <li>Interaction Design</li>
-                  <li>User Centered Design</li>
-                  <li>Wireframing</li>
-                  <li>User Research</li>
-                </ul>
-              </div>
+                
+              })}
+
+              <ul className='listItems'>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Javascript</li>
+                <li>React</li>
+              </ul>
+              <div className="subtitle">DESIGN</div>
+              <ul className='listItems'>
+                <li>User Interviews</li>
+                <li>Interaction Design</li>
+                <li>User Centered Design</li>
+                <li>Wireframing</li>
+                <li>User Research</li>
+              </ul>
             </div>
           </div>
         </div>
