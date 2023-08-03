@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 import './App.css'
 
 export default function App() {
@@ -25,56 +26,115 @@ export default function App() {
   const [newCategory, setNewCategory] = useState('')
   const [categories, setCategories] = useState([])
 
-  function handleCategoryAdd(e) {
-    // e.preventDefault()
+  const [newSkill, setNewSkill] = useState('')
+  const[skills, setSkills] = useState([])
 
+  function handleCategoryAdd(e) {
     setCategories((currentCategories) => {
       return [
         ...currentCategories, 
-        {title: newCategory, id: 12783}
+        {title: newCategory, id: crypto.randomUUID}
       ]
+    })
+    setNewCategory('')
+  }
+
+  function deleteCategory(id) {
+    setCategories(currentCategories => {
+      return currentCategories.filter(category => category.id!== id)
     })
   }
 
-console.log(categories)
+function handleSkillAdd(e) {
+  setSkills((currentSkills) => {
+    return [
+      ...currentSkills,
+      {title:newSkill, id: crypto.randomUUID},
+    ]
+  })
+  setNewSkill('')
+}
+
+function deleteSkill(id) {
+  setSkills(currentSkills => {
+    return currentSkills.filter(skill => skill.id !== id)
+  })
+}
 
   return (
     <>
       <div className="application">
         <div className="editor">
           <h1>CV Maker</h1>
-          <form className='new-bio'>
+          <form className="new-bio">
             <h2>Personal Information</h2>
             <div className="form-row">
               <label htmlFor="fullName">Full Name</label>
-              <input maxLength={20} onChange={e => setFullName(e.target.value)} type="text" name="fullName" id="fullName"/>
+              <input
+                maxLength={20}
+                onChange={(e) => setFullName(e.target.value)}
+                type="text"
+                name="fullName"
+                id="fullName"
+              />
             </div>
             <div className="form-row">
               <label htmlFor="occupation">Occupation</label>
-              <input maxLength={25} onChange={e => setOccupation(e.target.value)} type="text" name="occupation" id="occupation"/>
+              <input
+                maxLength={25}
+                onChange={(e) => setOccupation(e.target.value)}
+                type="text"
+                name="occupation"
+                id="occupation"
+              />
             </div>
             <div className="form-row">
               <label htmlFor="email">Email</label>
-              <input onChange={e => setEmail(e.target.value)} type="email" name="email" id="email"/>
+              <input
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                name="email"
+                id="email"
+              />
             </div>
             <div className="form-row">
               <label htmlFor="website">Website</label>
-              <input onChange={e => setWebsite(e.target.value)} type="url" name="website" id="website"/>
+              <input
+                onChange={(e) => setWebsite(e.target.value)}
+                type="url"
+                name="website"
+                id="website"
+              />
             </div>
             <div className="form-row">
               <label htmlFor="phone">Phone</label>
-              <input onChange={e => setPhone(e.target.value)} type="tel" name="phone" id="phone"/>
+              <input
+                onChange={(e) => setPhone(e.target.value)}
+                type="tel"
+                name="phone"
+                id="phone"
+              />
             </div>
           </form>
-          <form action="" className='education'>
+          <form action="" className="education">
             <h2>Education</h2>
             <div className="form-row">
               <label htmlFor="school">University</label>
-              <input onChange={e => setSchool(e.target.value)} type="text" name="school" id="school"/>
+              <input
+                onChange={(e) => setSchool(e.target.value)}
+                type="text"
+                name="school"
+                id="school"
+              />
             </div>
             <div className="form-row">
               <label htmlFor="degree">Degree</label>
-              <input onChange={e => setSchool(e.target.value)} type="text" name="degree" id="degree"/>
+              <input
+                onChange={(e) => setSchool(e.target.value)}
+                type="text"
+                name="degree"
+                id="degree"
+              />
             </div>
             {/* <div className="form-row">
               <label htmlFor="gpa">GPA</label>
@@ -83,88 +143,159 @@ console.log(categories)
             <div className="dates">
               <div className="form-row">
                 <label htmlFor="startDate">Start</label>
-                <input onChange={e => setStartDate(e.target.value)} type="text" name="startDate" id="startDate"/>
+                <input
+                  onChange={(e) => setStartDate(e.target.value)}
+                  type="text"
+                  name="startDate"
+                  id="startDate"
+                />
               </div>
               <div className="form-row">
                 <label htmlFor="endDate">End</label>
-                <input onChange={e => setEndDate(e.target.value)} type="text" name="endDate" id="endDate"/>
+                <input
+                  onChange={(e) => setEndDate(e.target.value)}
+                  type="text"
+                  name="endDate"
+                  id="endDate"
+                />
               </div>
             </div>
             <div className="form-row description">
               <label htmlFor="description">Description</label>
-              <textarea onChange={e => setDescription(e.target.value)} placeholder='List any significant accomplishments.'
-               rows={8} name="description" id="description"/>
+              <textarea
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="List any significant accomplishments."
+                rows={8}
+                name="description"
+                id="description"
+              />
             </div>
             <div className="buttons">
-              <button className='delete-education deleteBtn'>Delete</button>
-              <button className='add-education addBtn'>Add</button>
+              <button className="delete-education deleteBtn">Delete</button>
+              <button className="add-education addBtn">Add</button>
             </div>
           </form>
-          <form action="" className='experience'>
+          <form action="" className="experience">
             <h2>Experience</h2>
             <div className="form-row">
               <label htmlFor="company">Company</label>
-              <input onChange={e => setCompany(e.target.value)} type="text" name="company" id="company"/>
+              <input
+                onChange={(e) => setCompany(e.target.value)}
+                type="text"
+                name="company"
+                id="company"
+              />
             </div>
             <div className="form-row">
               <label htmlFor="position">Position</label>
-              <input onChange={e => setPosition(e.target.value)} type="text" name="position" id="position"/>
+              <input
+                onChange={(e) => setPosition(e.target.value)}
+                type="text"
+                name="position"
+                id="position"
+              />
             </div>
             <div className="dates">
               <div className="form-row">
                 <label htmlFor="startDate">Start</label>
-                <input onChange={e => setStartDate2(e.target.value)} type="text" name="startDate" id="startDate"/>
+                <input
+                  onChange={(e) => setStartDate2(e.target.value)}
+                  type="text"
+                  name="startDate"
+                  id="startDate"
+                />
               </div>
               <div className="form-row">
                 <label htmlFor="endDate">End</label>
-                <input onChange={e => setEndDate2(e.target.value)} type="text" name="endDate" id="endDate"/>
+                <input
+                  onChange={(e) => setEndDate2(e.target.value)}
+                  type="text"
+                  name="endDate"
+                  id="endDate"
+                />
               </div>
             </div>
             <div className="form-row description">
-              <label htmlFor="description">Description - List duties & accomplishments.</label>
-              <textarea onChange={e => setDescription1(e.target.value)} placeholder='Bullet 1'
-               rows={4} name="description" id="description"/>
+              <label htmlFor="description">
+                Description - List duties & accomplishments.
+              </label>
+              <textarea
+                onChange={(e) => setDescription1(e.target.value)}
+                placeholder="Bullet 1"
+                rows={4}
+                name="description"
+                id="description"
+              />
             </div>
             <div className="form-row description">
               <label htmlFor="description"></label>
-              <textarea onChange={e => setDescription2(e.target.value)} placeholder='Bullet 2'
-               rows={4} name="description" id="description"/>
+              <textarea
+                onChange={(e) => setDescription2(e.target.value)}
+                placeholder="Bullet 2"
+                rows={4}
+                name="description"
+                id="description"
+              />
             </div>
             <div className="form-row description">
               <label htmlFor="description"></label>
-              <textarea onChange={e => setDescription3(e.target.value)} placeholder='Bullet 3'
-               rows={4} name="description" id="description"/>
+              <textarea
+                onChange={(e) => setDescription3(e.target.value)}
+                placeholder="Bullet 3"
+                rows={4}
+                name="description"
+                id="description"
+              />
             </div>
             <div className="buttons">
-              <button className='delete-education deleteBtn'>Delete</button>
-              <button className='add-experience addBtn'>Add</button>
+              <button className="delete-education deleteBtn">Delete</button>
+              <button className="add-experience addBtn">Add</button>
             </div>
           </form>
-          <form action="" className='skillsForm'>
+          <form action="" className="skillsForm">
             <h2>Skills</h2>
             <div className="form-row">
               <label htmlFor="category">Category</label>
-              <input value={newCategory} onChange={e => setNewCategory(e.target.value)} type="text" name="category" id="category"/>
-              <img src="./icons/plus.svg" alt="" onClick={handleCategoryAdd}/>
+              <input
+                value={newCategory}
+                onChange={(e) => setNewCategory(e.target.value)}
+                type="text"
+                name="category"
+                id="category"
+              />
+              <img src="./icons/plus.svg" alt="" onClick={handleCategoryAdd} />
             </div>
-            <div className="form-row skillsRow" >
+            <div className="form-row skillsRow">
               <label htmlFor="skill">Skill</label>
-              <input type="text" name="skill" id="skill"/>
-              <img src="./icons/plus.svg" alt="" />
+              <input 
+                value={newSkill}
+                onChange={(e) => setNewSkill(e.target.value)}
+                type="text"
+                name="skill"
+                id="skill" />
+              <img src="./icons/plus.svg" alt="" onClick={handleSkillAdd}/>
             </div>
             <div className="categoryList list">
               <h3>Category</h3>
-              <div className="categoryListItem">
-                <div>Adobe PS</div>
-                <img src="./icons/close.svg" alt="" />
-              </div>
-              <div className="categoryListItem">
-                <div>Javascript</div>
-                <img src="./icons/close.svg" alt="" />
-              </div>
+              {categories.map(category => {
+                return <>
+                <div className="categoryListItem" key={category.key}>
+                  <div>{category.title}</div>
+                  <img src="./icons/close.svg" alt="" onClick={() => deleteCategory(category.id)}/>
+                </div>
+                </>
+              })}
             </div>
             <div className="skillsList list">
               <h3>Skills</h3>
+              {skills.map(skill => {
+                return <>
+                <div className="skillsListItem">
+                  <div>{skill.title}</div>
+                  <img src="./icons/close.svg" alt="" onClick={() => deleteSkill(skill.id)}/>
+                </div>
+                </>
+              })}
               <div className="skillsListItem">
                 <div>Adobe PS</div>
                 <img src="./icons/close.svg" alt="" />
@@ -184,7 +315,7 @@ console.log(categories)
           <div className="cvPreview">
             <div className="bioPreview">
               <div className="nameTitle">
-                <h1 >{fullName}</h1>
+                <h1>{fullName}</h1>
                 <h2>{occupation}</h2>
               </div>
               <div className="contactInfo">
@@ -193,7 +324,7 @@ console.log(categories)
                 <p>{phone}</p>
               </div>
             </div>
-            <div className='educationPreview'>
+            <div className="educationPreview">
               <h3>EDUCATION</h3>
               <div className="educationItem">
                 <div className="subtitle">{school}</div>
@@ -210,7 +341,7 @@ console.log(categories)
                 </ul>
               </div>
             </div>
-            <div className='experiencePreview'>
+            <div className="experiencePreview">
               <h3>EXPERIENCE</h3>
               <div className="experienceItem">
                 <div className="subtitle">{company}</div>
@@ -239,14 +370,17 @@ console.log(categories)
                   </div>
                 </div>
                 <ul>
-                  <li>Design the internal administration tool and 
-                    customer-facing application</li>
-                  <li>Build a robust, data heavy CRM by creating a cohesive system
+                  <li>
+                    Design the internal administration tool and customer-facing
+                    application
+                  </li>
+                  <li>
+                    Build a robust, data heavy CRM by creating a cohesive system
                     across two external systems.
                   </li>
                   <li>
-                    Streamline and optimize workflows for product and design utilizing
-                    reasearch, wireframes, and mockups.
+                    Streamline and optimize workflows for product and design
+                    utilizing reasearch, wireframes, and mockups.
                   </li>
                 </ul>
               </div>
@@ -259,40 +393,30 @@ console.log(categories)
                   </div>
                 </div>
                 <ul>
-                  <li>One of 3 students chosen from UTD to shadow UX 
-                    designers from Projekt202 in a week-long externship
-                    over spring break.
+                  <li>
+                    One of 3 students chosen from UTD to shadow UX designers
+                    from Projekt202 in a week-long externship over spring break.
                   </li>
                 </ul>
               </div>
             </div>
-            <div className='skillsPreview'>
+            <div className="skillsPreview">
               <h3>SKILLS</h3>
-              {categories.map(category => {
+              {categories.map((category) => {
                 return <div className="subtitle">
-                {category.title}
-              </div>
-                
+                  {category.title}
+                  </div>;
+              })}
+              {skills.map((skill) => {
+                return <li>
+                  {skill.title}
+                </li>
               })}
 
-              <ul className='listItems'>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>Javascript</li>
-                <li>React</li>
-              </ul>
-              <div className="subtitle">DESIGN</div>
-              <ul className='listItems'>
-                <li>User Interviews</li>
-                <li>Interaction Design</li>
-                <li>User Centered Design</li>
-                <li>Wireframing</li>
-                <li>User Research</li>
-              </ul>
             </div>
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }

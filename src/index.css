@@ -256,6 +256,7 @@ button {
   grid-template-columns: 3fr 1fr;
   grid-template-rows: 1fr 1fr 34fr;
   grid-gap: 1rem;
+
 }
 
 /* Bio preview */
