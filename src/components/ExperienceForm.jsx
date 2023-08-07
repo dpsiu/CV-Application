@@ -1,38 +1,49 @@
 import { useState, useEffect } from 'react'
 
 function ExperienceForm({onAddExperience}) {
-    const [company, setCompany] = useState('COMPANY')
-    const [position, setPosition] = useState('POSITION')
-    const [startDate, setStartDate] = useState('Start Date')
-    const [endDate, setEndDate] = useState('End Date')
-    const [description, setDescription] = useState('Description')
+    const [company, setCompany] = useState('')
+    const [position, setPosition] = useState('')
+    const [startDate, setStartDate] = useState('')
+    const [endDate, setEndDate] = useState('')
+    const [description, setDescription] = useState('')
 
     const [experiences, setExperience] = useState([])
 
     const handleAddExperience = () => {
+
+      if (!company ||!position ||!startDate ||!endDate ||!description) {
+        alert('Please fill out all fields')
+      }
+      
+      // event.preventDefault()
       const newExperience = {
-        company:  company,
+        company: company,
         position: position,
         startDate: startDate,
         endDate: endDate,
         description: description,
-      }
+        id: crypto.randomUUID()
+      };
+      onAddExperience(newExperience);
+      setExperience((prevExperiences) => [...prevExperiences, newExperience]);
 
-      onAddExperience(newExperience)
-
-      setExperience((prevExperiences) => [...prevExperiences,
-      newExperience])
-
-      setCompany('')
-      setPosition('')
-      setStartDate('')
-      setEndDate('')
-      setDescription('')
-    }
+      setCompany("");
+      setPosition('');
+      setStartDate("");
+      setEndDate("");
+      setDescription('');
+    };
 
     useEffect(() => {
       console.log(experiences);
     }, [experiences]);
+
+    // Delete experience
+    const handleDeleteExperience = (id) => {
+      setExperience((currentExperiences) => {
+        return currentExperiences.filter((experience => experience.id !== id))
+      })
+    }
 
     return (
       <>
@@ -43,6 +54,7 @@ function ExperienceForm({onAddExperience}) {
             type="text"
             name="company"
             id="company"
+            value={company}
           />
         </div>
         <div className="form-row">
@@ -52,6 +64,7 @@ function ExperienceForm({onAddExperience}) {
             type="text"
             name="position"
             id="position"
+            value={position}
           />
         </div>
         <div className="dates">
@@ -62,6 +75,7 @@ function ExperienceForm({onAddExperience}) {
               type="text"
               name="startDate"
               id="startDate"
+              value={startDate}
             />
           </div>
           <div className="form-row">
@@ -71,6 +85,7 @@ function ExperienceForm({onAddExperience}) {
               type="text"
               name="endDate"
               id="endDate"
+              value={endDate}
             />
           </div>
         </div>
@@ -82,10 +97,11 @@ function ExperienceForm({onAddExperience}) {
             rows={4}
             name="description"
             id="description"
+            value={description}
           />
         </div>
         <div className="buttons">
-          <button className='delete-education deleteBtn'>Delete</button>
+          <button className='delete-education deleteBtn' onClick={handleDeleteExperience}>Delete</button>
           <button className='add-experience addBtn' onClick={handleAddExperience}>Add</button>
         </div>
       </>
