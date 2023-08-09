@@ -2,26 +2,23 @@ import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import './App.css'
 
+import ExperienceForm from './components/ExperienceForm'
+import ExperienceList from './components/ExperienceList'
+import Biography from './components/Biography'
+import BiographyPreview from './components/BiographyPreview'
+
 export default function App() {
-  const [fullName, setFullName] = useState('Name')
-  const [occupation, setOccupation] = useState('Occupation')
-  const [email, setEmail] = useState('Email')
-  const [website, setWebsite] = useState('Website')
-  const [phone, setPhone] = useState('Phone') 
+  const [fullName, setFullName] = useState("Name");
+  const [occupation, setOccupation] = useState("Occupation");
+  const [email, setEmail] = useState("Email");
+  const [website, setWebsite] = useState("Website");
+  const [phone, setPhone] = useState("Phone"); 
 
   const [school, setSchool] = useState('SCHOOL')
   const [degree, setDegree] = useState('DEGREE')
   const [startDate, setStartDate] = useState('Start Date')
   const [endDate, setEndDate] = useState('End Date')
   const [description, setDescription] = useState('Description')
-
-  const [company, setCompany] = useState('COMPANY')
-  const [position, setPosition] = useState('POSITION')
-  const [startDate2, setStartDate2] = useState('Start Date')
-  const [endDate2, setEndDate2] = useState('End Date')
-  const [description1, setDescription1] = useState('Description')
-  const [description2, setDescription2] = useState('Description')
-  const [description3, setDescription3] = useState('Description')
 
   const [newCategory, setNewCategory] = useState('')
   const [categories, setCategories] = useState([])
@@ -32,11 +29,11 @@ export default function App() {
   function handleCategoryAdd(e) {
     setCategories((currentCategories) => {
       return [
-        ...currentCategories, 
-        {title: newCategory, id: crypto.randomUUID}
-      ]
-    })
-    setNewCategory('')
+        ...currentCategories,
+        { title: newCategory, id: crypto.randomUUID()} // Fix the object key here
+      ];
+    });
+    setNewCategory('');
   }
 
   function deleteCategory(id) {
@@ -45,77 +42,76 @@ export default function App() {
     })
   }
 
-function handleSkillAdd(e) {
-  setSkills((currentSkills) => {
-    return [
-      ...currentSkills,
-      {title:newSkill, id: crypto.randomUUID},
-    ]
-  })
-  setNewSkill('')
-}
+  function handleSkillAdd(e) {
+    setSkills((currentSkills) => {
+      return [
+        ...currentSkills,
+        {title:newSkill, id: crypto.randomUUID()},
+      ]
+    })
+    setNewSkill('')
+  }
 
-function deleteSkill(id) {
-  setSkills(currentSkills => {
-    return currentSkills.filter(skill => skill.id !== id)
-  })
-}
+  function deleteSkill(id) {
+    setSkills(currentSkills => {
+      return currentSkills.filter(skill => skill.id !== id)
+    })
+  }
+
+  const [experiences, setExperiences] = useState([]);
+
+  const handleAddExperience = (newExperience) => {
+    event.preventDefault()
+    setExperiences((prevExperiences) => [...prevExperiences, newExperience]);
+  }
+
+  const handleDeleteExperience = (id) => {
+    setExperiences(currentExperiences => {
+      return currentExperiences.filter((experience => experience.id !== id))
+    })
+  }
+
+  const handleNameChange = (value) => {
+    setFullName(value)
+  }
+
+  const handleOccupationChange = (value) => {
+    setOccupation(value)
+  }
+
+  const handleEmailChange = (value) => {
+    setEmail(value)
+  }
+
+  const handleWebsiteChange = (value) => {
+    setWebsite(value)
+  }
+
+  const handlePhoneChange = (value) => {
+    setPhone(value)
+  }
+
+  // const handleChange = (e) => {
+  //   const {name, value} = e.target;
+  //   setExperiences((prevExperiences) => {
+  //     [...prevExperiences, [name]: value]
+  //   })
+  // }
 
   return (
     <>
       <div className="application">
+        
         <div className="editor">
           <h1>CV Maker</h1>
-          <form className="new-bio">
-            <h2>Personal Information</h2>
-            <div className="form-row">
-              <label htmlFor="fullName">Full Name</label>
-              <input
-                maxLength={20}
-                onChange={(e) => setFullName(e.target.value)}
-                type="text"
-                name="fullName"
-                id="fullName"
-              />
-            </div>
-            <div className="form-row">
-              <label htmlFor="occupation">Occupation</label>
-              <input
-                maxLength={25}
-                onChange={(e) => setOccupation(e.target.value)}
-                type="text"
-                name="occupation"
-                id="occupation"
-              />
-            </div>
-            <div className="form-row">
-              <label htmlFor="email">Email</label>
-              <input
-                onChange={(e) => setEmail(e.target.value)}
-                type="email"
-                name="email"
-                id="email"
-              />
-            </div>
-            <div className="form-row">
-              <label htmlFor="website">Website</label>
-              <input
-                onChange={(e) => setWebsite(e.target.value)}
-                type="url"
-                name="website"
-                id="website"
-              />
-            </div>
-            <div className="form-row">
-              <label htmlFor="phone">Phone</label>
-              <input
-                onChange={(e) => setPhone(e.target.value)}
-                type="tel"
-                name="phone"
-                id="phone"
-              />
-            </div>
-          </form>
+          <Biography 
+            onFullNameChange={handleNameChange}
+            onOccupationChange={handleOccupationChange}
+            onEmailChange={handleEmailChange}
+            onWebsiteChange={handleWebsiteChange}
+            onPhoneChange={handlePhoneChange}
+          />
+
           <form action="" className="education">
             <h2>Education</h2>
             <div className="form-row">
@@ -130,16 +126,12 @@ function deleteSkill(id) {
             <div className="form-row">
               <label htmlFor="degree">Degree</label>
               <input
-                onChange={(e) => setSchool(e.target.value)}
+                onChange={(e) => setDegree(e.target.value)}
                 type="text"
                 name="degree"
                 id="degree"
               />
             </div>
-            {/* <div className="form-row">
-              <label htmlFor="gpa">GPA</label>
-              <input type="text" name="gpa" id="gpa"/>
-            </div> */}
             <div className="dates">
               <div className="form-row">
                 <label htmlFor="startDate">Start</label>
@@ -170,86 +162,26 @@ function deleteSkill(id) {
                 id="description"
               />
             </div>
-            <div className="buttons">
-              <button className="delete-education deleteBtn">Delete</button>
-              <button className="add-education addBtn">Add</button>
-            </div>
           </form>
-          <form action="" className="experience">
+          <form
+            action=""
+            className="experience"
+            onSubmit={(e) => e.preventDefault()}
+          >
             <h2>Experience</h2>
-            <div className="form-row">
-              <label htmlFor="company">Company</label>
-              <input
-                onChange={(e) => setCompany(e.target.value)}
-                type="text"
-                name="company"
-                id="company"
-              />
-            </div>
-            <div className="form-row">
-              <label htmlFor="position">Position</label>
-              <input
-                onChange={(e) => setPosition(e.target.value)}
-                type="text"
-                name="position"
-                id="position"
-              />
-            </div>
-            <div className="dates">
-              <div className="form-row">
-                <label htmlFor="startDate">Start</label>
-                <input
-                  onChange={(e) => setStartDate2(e.target.value)}
-                  type="text"
-                  name="startDate"
-                  id="startDate"
-                />
-              </div>
-              <div className="form-row">
-                <label htmlFor="endDate">End</label>
-                <input
-                  onChange={(e) => setEndDate2(e.target.value)}
-                  type="text"
-                  name="endDate"
-                  id="endDate"
-                />
-              </div>
-            </div>
-            <div className="form-row description">
-              <label htmlFor="description">
-                Description - List duties & accomplishments.
-              </label>
-              <textarea
-                onChange={(e) => setDescription1(e.target.value)}
-                placeholder="Bullet 1"
-                rows={4}
-                name="description"
-                id="description"
-              />
-            </div>
-            <div className="form-row description">
-              <label htmlFor="description"></label>
-              <textarea
-                onChange={(e) => setDescription2(e.target.value)}
-                placeholder="Bullet 2"
-                rows={4}
-                name="description"
-                id="description"
-              />
-            </div>
-            <div className="form-row description">
-              <label htmlFor="description"></label>
-              <textarea
-                onChange={(e) => setDescription3(e.target.value)}
-                placeholder="Bullet 3"
-                rows={4}
-                name="description"
-                id="description"
-              />
-            </div>
-            <div className="buttons">
-              <button className="delete-education deleteBtn">Delete</button>
-              <button className="add-experience addBtn">Add</button>
+            <ExperienceForm onAddExperience={handleAddExperience} />
+            <div className="skillsList list">
+              <h3>Experiences</h3>
+              {experiences.map((experience) => (
+                <div className="skillsListItem" key={experience.id}>
+                  <div>{experience.company}</div>
+                  <img
+                    src="./icons/close.svg"
+                    alt=""
+                    onClick={() => handleDeleteExperience(experience.id)}
+                  />
+                </div>
+              ))}
             </div>
           </form>
           <form action="" className="skillsForm">
@@ -267,63 +199,56 @@ function deleteSkill(id) {
             </div>
             <div className="form-row skillsRow">
               <label htmlFor="skill">Skill</label>
-              <input 
+              <input
                 value={newSkill}
                 onChange={(e) => setNewSkill(e.target.value)}
                 type="text"
                 name="skill"
-                id="skill" />
-              <img src="./icons/plus.svg" alt="" onClick={handleSkillAdd}/>
+                id="skill"
+              />
+              <img src="./icons/plus.svg" alt="" onClick={handleSkillAdd} />
             </div>
             <div className="categoryList list">
               <h3>Category</h3>
-              {categories.map(category => {
-                return <>
-                <div className="categoryListItem" key={category.key}>
+              {categories.map((category) => (
+                <div className="categoryListItem" key={category.id}>
                   <div>{category.title}</div>
-                  <img src="./icons/close.svg" alt="" onClick={() => deleteCategory(category.id)}/>
+                  <img
+                    src="./icons/close.svg"
+                    alt=""
+                    onClick={() => deleteCategory(category.id)}
+                  />
                 </div>
-                </>
-              })}
+              ))}
             </div>
             <div className="skillsList list">
               <h3>Skills</h3>
-              {skills.map(skill => {
-                return <>
-                <div className="skillsListItem">
-                  <div>{skill.title}</div>
-                  <img src="./icons/close.svg" alt="" onClick={() => deleteSkill(skill.id)}/>
-                </div>
-                </>
+              {skills.map((skill) => {
+                return (
+                  <>
+                    <div className="skillsListItem" key={skill.id}>
+                      <div>{skill.title}</div>
+                      <img
+                        src="./icons/close.svg"
+                        alt=""
+                        onClick={() => deleteSkill(skill.id)}
+                      />
+                    </div>
+                  </>
+                );
               })}
-              <div className="skillsListItem">
-                <div>Adobe PS</div>
-                <img src="./icons/close.svg" alt="" />
-              </div>
-              <div className="skillsListItem">
-                <div>Javascript</div>
-                <img src="./icons/close.svg" alt="" />
-              </div>
-              <div className="skillsListItem">
-                <div>React</div>
-                <img src="./icons/close.svg" alt="" />
-              </div>
             </div>
           </form>
         </div>
         <div className="cvPreviewBody">
           <div className="cvPreview">
-            <div className="bioPreview">
-              <div className="nameTitle">
-                <h1>{fullName}</h1>
-                <h2>{occupation}</h2>
-              </div>
-              <div className="contactInfo">
-                <p>{email}</p>
-                <p>{website}</p>
-                <p>{phone}</p>
-              </div>
-            </div>
+            <BiographyPreview
+              fullName={fullName}
+              occupation={occupation}
+              email={email}
+              website={website}
+              phone={phone}
+            />
             <div className="educationPreview">
               <h3>EDUCATION</h3>
               <div className="educationItem">
@@ -343,22 +268,7 @@ function deleteSkill(id) {
             </div>
             <div className="experiencePreview">
               <h3>EXPERIENCE</h3>
-              <div className="experienceItem">
-                <div className="subtitle">{company}</div>
-                <div className="dateInfo">
-                  <div className="position">{position} |</div>
-                  <div className="dates">
-                    <div className="startDate">{startDate2}</div>
-                    <div> - </div>
-                    <div className="endDate">{endDate2}</div>
-                  </div>
-                </div>
-                <ul>
-                  <li>{description1}</li>
-                  <li>{description2}</li>
-                  <li>{description3}</li>
-                </ul>
-              </div>
+              <ExperienceList experiences={experiences} />
               <div className="experienceItem">
                 <div className="subtitle">FOODMAGNET</div>
                 <div className="dateInfo">
@@ -403,16 +313,11 @@ function deleteSkill(id) {
             <div className="skillsPreview">
               <h3>SKILLS</h3>
               {categories.map((category) => {
-                return <div className="subtitle">
-                  {category.title}
-                  </div>;
+                return <div className="subtitle">{category.title}</div>;
               })}
               {skills.map((skill) => {
-                return <li>
-                  {skill.title}
-                </li>
+                return <li>{skill.title}</li>;
               })}
-
             </div>
           </div>
         </div>

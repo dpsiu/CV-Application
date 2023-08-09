@@ -359,7 +359,8 @@ img .form-row:focus {
   margin: .5rem 0rem;
 }
 
-.cvPreview li {
+.cvPreview li,
+.description {
   font-size: .8rem;
   line-height: 1.2rem;
   margin: 4px 0px;
