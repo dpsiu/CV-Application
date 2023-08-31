@@ -1,110 +1,122 @@
-import { useState } from 'react'
-import { v4 as uuidv4 } from 'uuid';
-import './App.css'
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import "./App.css";
 
-import ExperienceForm from './components/ExperienceForm'
-import ExperienceList from './components/ExperienceList'
-import Biography from './components/Biography'
-import BiographyPreview from './components/BiographyPreview'
+import ExperienceForm from "./components/ExperienceForm";
+import ExperienceList from "./components/ExperienceList";
+import Biography from "./components/Biography";
+import BiographyPreview from "./components/BiographyPreview";
 
 export default function App() {
   const [fullName, setFullName] = useState("Name");
   const [occupation, setOccupation] = useState("Occupation");
   const [email, setEmail] = useState("Email");
   const [website, setWebsite] = useState("Website");
-  const [phone, setPhone] = useState("Phone"); 
+  const [phone, setPhone] = useState("Phone");
 
-  const [school, setSchool] = useState('SCHOOL')
-  const [degree, setDegree] = useState('DEGREE')
-  const [startDate, setStartDate] = useState('Start Date')
-  const [endDate, setEndDate] = useState('End Date')
-  const [description, setDescription] = useState('Description')
+  const [school, setSchool] = useState("SCHOOL");
+  const [degree, setDegree] = useState("DEGREE");
+  const [startDate, setStartDate] = useState("Start Date");
+  const [endDate, setEndDate] = useState("End Date");
+  const [description, setDescription] = useState("Description");
 
-  const [newCategory, setNewCategory] = useState('')
-  const [categories, setCategories] = useState([])
+  const [newCategory, setNewCategory] = useState("");
+  const [categories, setCategories] = useState([]);
 
-  const [newSkill, setNewSkill] = useState('')
-  const[skills, setSkills] = useState([])
+  const [newSkill, setNewSkill] = useState("");
+  const [skills, setSkills] = useState([]);
+
+  const exampleExperience = {
+    company: "EXAMPLE - COMPANY A",
+    position: "UX DESIGNER",
+    startDate: "JAN 2023",
+    endDate: "NOV 2022",
+    description1: "Design the internal administration tool and customer-facing application.",
+    description2: "Build a robust, data heavy CRM by creating a cohesive system across two external systems.",
+    description3: "Streamline and optimize workflows for product and design utilizing reasearch, wireframes, and mockups.",
+    id: crypto.randomUUID(),
+  };
 
   function handleCategoryAdd(e) {
     setCategories((currentCategories) => {
       return [
         ...currentCategories,
-        { title: newCategory, id: crypto.randomUUID()} // Fix the object key here
+        { title: newCategory, id: crypto.randomUUID() },
       ];
     });
-    setNewCategory('');
+    setNewCategory("");
   }
 
   function deleteCategory(id) {
-    setCategories(currentCategories => {
-      return currentCategories.filter(category => category.id!== id)
-    })
+    setCategories((currentCategories) => {
+      return currentCategories.filter((category) => category.id !== id);
+    });
   }
 
   function handleSkillAdd(e) {
     setSkills((currentSkills) => {
-      return [
-        ...currentSkills,
-        {title:newSkill, id: crypto.randomUUID()},
-      ]
-    })
-    setNewSkill('')
+      return [...currentSkills, { title: newSkill, id: crypto.randomUUID() }];
+    });
+    setNewSkill("");
   }
 
   function deleteSkill(id) {
-    setSkills(currentSkills => {
-      return currentSkills.filter(skill => skill.id !== id)
-    })
+    setSkills((currentSkills) => {
+      return currentSkills.filter((skill) => skill.id !== id);
+    });
   }
 
-  const [experiences, setExperiences] = useState([]);
+  const [experiences, setExperiences] = useState([exampleExperience]);
 
   const handleAddExperience = (newExperience) => {
-    event.preventDefault()
+    event.preventDefault();
     setExperiences((prevExperiences) => [...prevExperiences, newExperience]);
-  }
+  };
 
   const handleDeleteExperience = (id) => {
-    setExperiences(currentExperiences => {
-      return currentExperiences.filter((experience => experience.id !== id))
-    })
+    setExperiences((currentExperiences) => {
+      return currentExperiences.filter((experience) => experience.id !== id);
+    });
+  };
+
+  const handleAddExampleExperience = (exampleExperience) => {
+    setExperiences(handleAddExperience(exampleExperience))
   }
 
   const handleNameChange = (value) => {
-    setFullName(value)
-  }
+    setFullName(value);
+  };
 
   const handleOccupationChange = (value) => {
-    setOccupation(value)
-  }
+    setOccupation(value);
+  };
 
   const handleEmailChange = (value) => {
-    setEmail(value)
-  }
+    setEmail(value);
+  };
 
   const handleWebsiteChange = (value) => {
-    setWebsite(value)
-  }
+    setWebsite(value);
+  };
 
   const handlePhoneChange = (value) => {
-    setPhone(value)
-  }
+    setPhone(value);
+  };
 
-  // const handleChange = (e) => {
-  //   const {name, value} = e.target;
-  //   setExperiences((prevExperiences) => {
-  //     [...prevExperiences, [name]: value]
-  //   })
-  // }
+  const [listItems, setListItems] = useState([]);
+
+  const addListItem = (value) => {
+    if (value.trim() !== "") {
+      setListItems((prevListItems) => [...prevListItems, value]);
+    }
+  };
 
   return (
     <>
       <div className="application">
-        
         <div className="editor">
           <h1>CV Maker</h1>
-          <Biography 
+          <Biography
             onFullNameChange={handleNameChange}
             onOccupationChange={handleOccupationChange}
             onEmailChange={handleEmailChange}
@@ -169,7 +181,11 @@ export default function App() {
             onSubmit={(e) => e.preventDefault()}
           >
             <h2>Experience</h2>
-            <ExperienceForm onAddExperience={handleAddExperience} />
+            <ExperienceForm
+              onAddExampleExperience={handleAddExampleExperience}
+              onAddExperience={handleAddExperience}
+              onAddListItem={addListItem}
+            />
             <div className="skillsList list">
               <h3>Experiences</h3>
               {experiences.map((experience) => (
@@ -268,47 +284,7 @@ export default function App() {
             </div>
             <div className="experiencePreview">
               <h3>EXPERIENCE</h3>
-              <ExperienceList experiences={experiences} />
-              <div className="experienceItem">
-                <div className="subtitle">FOODMAGNET</div>
-                <div className="dateInfo">
-                  <div className="position">UX DESIGNER |</div>
-                  <div className="dates">
-                    <div className="startDate">JAN 2022</div>
-                    <div> - </div>
-                    <div className="endDate">NOV 2022</div>
-                  </div>
-                </div>
-                <ul>
-                  <li>
-                    Design the internal administration tool and customer-facing
-                    application
-                  </li>
-                  <li>
-                    Build a robust, data heavy CRM by creating a cohesive system
-                    across two external systems.
-                  </li>
-                  <li>
-                    Streamline and optimize workflows for product and design
-                    utilizing reasearch, wireframes, and mockups.
-                  </li>
-                </ul>
-              </div>
-              <div className="experienceItem">
-                <div className="subtitle">PROJKET202</div>
-                <div className="dateInfo">
-                  <div className="position">UX EXTERN |</div>
-                  <div className="dates">
-                    <div className="startDate">MAR 202</div>
-                  </div>
-                </div>
-                <ul>
-                  <li>
-                    One of 3 students chosen from UTD to shadow UX designers
-                    from Projekt202 in a week-long externship over spring break.
-                  </li>
-                </ul>
-              </div>
+              <ExperienceList experiences={experiences}/>
             </div>
             <div className="skillsPreview">
               <h3>SKILLS</h3>

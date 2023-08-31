@@ -72,7 +72,8 @@ form {
 
 
 form label{
-  margin-right: 1rem;
+  margin: .5rem .5rem .5rem 1rem;
+  font-size: 1rem;
   min-width: fit-content;
 }
 
@@ -86,6 +87,7 @@ form input,
   width: 70%;
   letter-spacing: 1px;
   resize: none;
+  margin:0rem 1rem;
 }
 
 input:focus,
@@ -93,7 +95,15 @@ input:focus,
   outline: none;
   color: var(--color-light);
   border: var(--color-main) 2px solid;
-  
+}
+
+#description {
+  margin: .5rem;
+  width: inherit;
+}
+
+#description::placeholder {
+  color: var(--color-light-placeholder);
 }
 
 .buttons {
@@ -135,7 +145,6 @@ button {
 .addBtn:hover {
   background-color: var(--color-main);
 }
-
 
 .dates {
   display: flex;
@@ -356,14 +365,14 @@ img .form-row:focus {
 
 .cvPreview ul {
   padding-left: 1.2rem;
-  margin: .5rem 0rem;
+  margin: .7rem 0rem;
 }
 
 .cvPreview li,
 .description {
   font-size: .8rem;
   line-height: 1.2rem;
-  margin: 4px 0px;
+  margin: .5rem 0px;
   flex-wrap: wrap;
 }
 
@@ -373,26 +382,8 @@ img .form-row:focus {
 
   display: flex;
   flex-direction: column;
-  justify-content:baseline;
   flex-wrap: wrap;
 }
-
-.description {
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
-  justify-content: baseline;
-}
-
-#description {
-  width: 97%;
-}
-
-#description::placeholder {
-  color: var(--color-light-placeholder);
-}
-
-
 
 .skillsPreview {
   grid-column: 2/3;

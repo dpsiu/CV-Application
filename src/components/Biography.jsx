@@ -16,7 +16,9 @@ function Biography({onFullNameChange, onOccupationChange, onEmailChange, onWebsi
         <label htmlFor="fullName">Full Name</label>
         <input
             maxLength={20}
-            onChange={onFullNameChange}
+            onChange={(e) => {
+                setFullName(onFullNameChange(e.target.value))
+            }}
             type="text"
             name="fullName"
             id="fullName"
