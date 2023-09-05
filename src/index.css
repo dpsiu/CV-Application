@@ -23,12 +23,35 @@ body {
   color: var(--color-light);
   background-color: var(--color-grey);
   width: 100%;
+  overflow: auto;
 }
 
-.editor {
-  overflow-y: auto;
-  height: 1150px;
-  width: fit-content;
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-grey);
+}
+
+.editor::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+scrollbar-thumb {
+  background: #888;
+}
+
+scrollbar-thumb:hover {
+  background: #555;
 }
 
 h1 {
@@ -243,6 +266,10 @@ button {
   align-items: center;
   background-color: var(--color-dark);
   box-shadow: var(--color-dark) 0px 0px 15px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 1050px;
+  width: fit-content;
 }
 
 .cvPreviewBody{
@@ -256,7 +283,7 @@ button {
   padding: 3rem;
   background-color: var(--color-light);
   box-shadow: var(--color-dark) 0px 0px 15px;
-  margin: 3rem;
+  margin: 2rem;
 
   width: 630px;
   height: 880px;
@@ -293,12 +320,6 @@ button {
   font-weight: 600;
   background-color:var(--color-light);
   letter-spacing: 6px;
-
-  /* overflow: hidden; */
-  /* white-space: nowrap; */
-  /* text-overflow: clip; */
-  /* text-overflow: clip;
-  transition: font-size 0.3s; */
 }
 
 .nameTitle h2 {
@@ -353,10 +374,6 @@ img .form-row:focus {
   border: blue solid 2px;
 }
 
-/* .degree {
-  margin: 0px .5rem;
-} */
-
 .startDate,
 .endDate,
 .dates {
@@ -398,6 +415,46 @@ img .form-row:focus {
   margin-top: 1rem;
 }
 
+/* Footer */
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  background-color: var(--color-grey);
+  border-top: 1px solid var(--color-dark);
+  position: relative;
+  bottom: 0;
+
+  width: 100%;
+  min-width: 320px;
+}
+
+.footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-light);
+}
+
+.footer a:hover {
+  color: #6bcda2;
+}
+
+.footer img {
+  height: 2rem;
+  filter: invert(100%);
+}
+
+.footer p,
+.footer img {
+  padding: .5rem 1rem;
+  margin: 0px 2rem 0px 0rem;
+}
+
+
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -407,7 +464,5 @@ img .form-row:focus {
   a:hover {
     color: #747bff;
   }
-  /* button {
-    background-color: #f9f9f9;
-  } */
+
 }

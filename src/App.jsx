@@ -6,6 +6,7 @@ import ExperienceForm from "./components/ExperienceForm";
 import ExperienceList from "./components/ExperienceList";
 import Biography from "./components/Biography";
 import BiographyPreview from "./components/BiographyPreview";
+import Footer from "./components/Footer"
 
 export default function App() {
   const [fullName, setFullName] = useState("Name");
@@ -303,6 +304,7 @@ export default function App() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
