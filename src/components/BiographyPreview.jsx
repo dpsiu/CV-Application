@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
- 
-function BiographyPreview({fullName, occupation, email, website, phone}) {
+import React, { useState } from "react";
+
+function BiographyPreview({ fullName, occupation, email, website, phone }) {
   return (
     <div className="bioPreview">
       <div className="nameTitle">

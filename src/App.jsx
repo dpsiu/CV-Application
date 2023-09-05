@@ -20,9 +20,6 @@ export default function App() {
   const [endDate, setEndDate] = useState("End Date");
   const [description, setDescription] = useState("Description");
 
-  // const [newCategory, setNewCategory] = useState("");
-  // const [categories, setCategories] = useState([]);
-
   const [newSkill, setNewSkill] = useState([]);
   const [skillsList, setSkillsList] = useState([]);
 
@@ -42,8 +39,8 @@ export default function App() {
 
   function handleCategoryAdd(e) {
     if (!newSkill) {
-      alert("Please enter a category")
-      return
+      alert("Please enter a category");
+      return;
     }
     setSkillsList((currentSkillsList) => {
       return [
@@ -56,8 +53,8 @@ export default function App() {
 
   function handleSkillAdd(e) {
     if (!newSkill) {
-      alert("Please enter a skill")
-      return
+      alert("Please enter a skill");
+      return;
     }
     setSkillsList((currentSkillsList) => {
       return [
@@ -76,7 +73,7 @@ export default function App() {
 
   function checkEmpty(value) {
     if (!value) {
-      alert("Please fill out the input field!")
+      alert("Please fill out the input field!");
     }
   }
 

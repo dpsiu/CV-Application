@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function ExperienceForm({ onAddExperience}) {
+function ExperienceForm({ onAddExperience }) {
   const [company, setCompany] = useState("");
   const [position, setPosition] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -12,11 +12,18 @@ function ExperienceForm({ onAddExperience}) {
   const [experiences, setExperience] = useState([]);
 
   const handleAddExperience = () => {
-    if (!company || !position || !startDate || !endDate || !description1 || !description2 || !description3) {
+    if (
+      !company ||
+      !position ||
+      !startDate ||
+      !endDate ||
+      !description1 ||
+      !description2 ||
+      !description3
+    ) {
       alert("Please fill out all fields");
-      return
+      return;
     }
-
 
     const newExperience = {
       company: company,
@@ -45,22 +52,6 @@ function ExperienceForm({ onAddExperience}) {
       return currentExperiences.filter((experience) => experience.id !== id);
     });
   };
-
-  // const [listItems, setListItems] = useState([]);
-
-  // const handleKeyPress = (e) => {
-  //   if (e.key === "Enter") {
-  //     onAddListItem(description);
-  //     setDescription("");
-  //   }
-  // };
-
-  // const addListItem = (value) => {
-  //   if (value.trim() !== "") {
-  //     setListItems((listItems) => [...listItems, value]);
-  //   }
-  //   console.log("List items = " + listItems);
-  // };
 
   return (
     <>
