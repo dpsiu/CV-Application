@@ -219,13 +219,13 @@ button {
   height: 1.5rem;
   filter: invert(100%);
   margin-left: 1rem;
-  border: rgba(0, 0, 0, 0) 2px solid;
+  border: rgba(255, 255, 255, 0) 2px solid;
   border-radius: .4rem;
 }
 
-.skillsListItem, 
+.skillsListItem img:hover, 
 .categoryListItem img:hover {
-  border: var(--color-dark) 2px solid;
+  border: black 2px solid;
 }
 
 /* CV Preview */
@@ -343,7 +343,7 @@ button {
   margin: .5rem 0rem;
 }
 
-.subtitle {
+.category {
   font-weight: 700;
   letter-spacing: 2px;
   font-size: .9rem;

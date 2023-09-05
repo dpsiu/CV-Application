@@ -20,50 +20,64 @@ export default function App() {
   const [endDate, setEndDate] = useState("End Date");
   const [description, setDescription] = useState("Description");
 
-  const [newCategory, setNewCategory] = useState("");
-  const [categories, setCategories] = useState([]);
+  // const [newCategory, setNewCategory] = useState("");
+  // const [categories, setCategories] = useState([]);
 
-  const [newSkill, setNewSkill] = useState("");
-  const [skills, setSkills] = useState([]);
+  const [newSkill, setNewSkill] = useState([]);
+  const [skillsList, setSkillsList] = useState([]);
 
   const exampleExperience = {
     company: "EXAMPLE - COMPANY A",
     position: "UX DESIGNER",
-    startDate: "JAN 2023",
-    endDate: "NOV 2022",
-    description1: "Design the internal administration tool and customer-facing application.",
-    description2: "Build a robust, data heavy CRM by creating a cohesive system across two external systems.",
-    description3: "Streamline and optimize workflows for product and design utilizing reasearch, wireframes, and mockups.",
+    startDate: "JAN 2022",
+    endDate: "DEC 2023",
+    description1:
+      "Design the internal administration tool and customer-facing application.",
+    description2:
+      "Build a robust, data heavy CRM by creating a cohesive system across two external systems.",
+    description3:
+      "Streamline and optimize workflows for product and design utilizing reasearch, wireframes, and mockups.",
     id: crypto.randomUUID(),
   };
 
   function handleCategoryAdd(e) {
-    setCategories((currentCategories) => {
+    if (!newSkill) {
+      alert("Please enter a category")
+      return
+    }
+    setSkillsList((currentSkillsList) => {
       return [
-        ...currentCategories,
-        { title: newCategory, id: crypto.randomUUID() },
+        ...currentSkillsList,
+        { title: newSkill, id: crypto.randomUUID(), className: "category" },
       ];
     });
-    setNewCategory("");
-  }
-
-  function deleteCategory(id) {
-    setCategories((currentCategories) => {
-      return currentCategories.filter((category) => category.id !== id);
-    });
+    setNewSkill("");
   }
 
   function handleSkillAdd(e) {
-    setSkills((currentSkills) => {
-      return [...currentSkills, { title: newSkill, id: crypto.randomUUID() }];
+    if (!newSkill) {
+      alert("Please enter a skill")
+      return
+    }
+    setSkillsList((currentSkillsList) => {
+      return [
+        ...currentSkillsList,
+        { title: newSkill, id: crypto.randomUUID(), className: "skill" },
+      ];
     });
     setNewSkill("");
   }
 
   function deleteSkill(id) {
-    setSkills((currentSkills) => {
-      return currentSkills.filter((skill) => skill.id !== id);
+    setSkillsList((currentSkillsList) => {
+      return currentSkillsList.filter((skill) => skill.id !== id);
     });
+  }
+
+  function checkEmpty(value) {
+    if (!value) {
+      alert("Please fill out the input field!")
+    }
   }
 
   const [experiences, setExperiences] = useState([exampleExperience]);
@@ -80,8 +94,8 @@ export default function App() {
   };
 
   const handleAddExampleExperience = (exampleExperience) => {
-    setExperiences(handleAddExperience(exampleExperience))
-  }
+    setExperiences(handleAddExperience(exampleExperience));
+  };
 
   const handleNameChange = (value) => {
     setFullName(value);
@@ -101,14 +115,6 @@ export default function App() {
 
   const handlePhoneChange = (value) => {
     setPhone(value);
-  };
-
-  const [listItems, setListItems] = useState([]);
-
-  const addListItem = (value) => {
-    if (value.trim() !== "") {
-      setListItems((prevListItems) => [...prevListItems, value]);
-    }
   };
 
   return (
@@ -184,7 +190,6 @@ export default function App() {
             <ExperienceForm
               onAddExampleExperience={handleAddExampleExperience}
               onAddExperience={handleAddExperience}
-              onAddListItem={addListItem}
             />
             <div className="skillsList list">
               <h3>Experiences</h3>
@@ -205,8 +210,8 @@ export default function App() {
             <div className="form-row">
               <label htmlFor="category">Category</label>
               <input
-                value={newCategory}
-                onChange={(e) => setNewCategory(e.target.value)}
+                value={newSkill}
+                onChange={(e) => setNewSkill(e.target.value)}
                 type="text"
                 name="category"
                 id="category"
@@ -226,21 +231,24 @@ export default function App() {
             </div>
             <div className="categoryList list">
               <h3>Category</h3>
-              {categories.map((category) => (
-                <div className="categoryListItem" key={category.id}>
-                  <div>{category.title}</div>
-                  <img
-                    src="./icons/close.svg"
-                    alt=""
-                    onClick={() => deleteCategory(category.id)}
-                  />
-                </div>
-              ))}
+              {skillsList
+                .filter((skill) => skill.className === "category")
+                .map((skill) => (
+                  <div className="skillsListItem" key={skill.id}>
+                    <div>{skill.title}</div>
+                    <img
+                      src="./icons/close.svg"
+                      alt=""
+                      onClick={() => deleteSkill(skill.id)}
+                    />
+                  </div>
+                ))}
             </div>
             <div className="skillsList list">
               <h3>Skills</h3>
-              {skills.map((skill) => {
-                return (
+              {skillsList
+                .filter((skill) => skill.className === "skill")
+                .map((skill) => (
                   <>
                     <div className="skillsListItem" key={skill.id}>
                       <div>{skill.title}</div>
@@ -251,8 +259,7 @@ export default function App() {
                       />
                     </div>
                   </>
-                );
-              })}
+                ))}
             </div>
           </form>
         </div>
@@ -284,15 +291,16 @@ export default function App() {
             </div>
             <div className="experiencePreview">
               <h3>EXPERIENCE</h3>
-              <ExperienceList experiences={experiences}/>
+              <ExperienceList experiences={experiences} />
             </div>
             <div className="skillsPreview">
               <h3>SKILLS</h3>
-              {categories.map((category) => {
-                return <div className="subtitle">{category.title}</div>;
-              })}
-              {skills.map((skill) => {
-                return <li>{skill.title}</li>;
+              {skillsList.map((skill) => {
+                return (
+                  <div className={skill.className} key={crypto.randomUUID()}>
+                    {skill.title}
+                  </div>
+                );
               })}
             </div>
           </div>
