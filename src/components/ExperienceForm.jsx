@@ -128,12 +128,12 @@ function ExperienceForm({ onAddExperience }) {
         ></textarea>
       </div>
       <div className="buttons">
-        <button
+        {/* <button
           className="delete-education deleteBtn"
           onClick={handleDeleteExperience}
         >
           Delete
-        </button>
+        </button> */}
         <button className="add-experience addBtn" onClick={handleAddExperience}>
           Add
         </button>

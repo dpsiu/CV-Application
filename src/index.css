@@ -270,6 +270,7 @@ button {
   overflow-x: hidden;
   height: 1050px;
   width: fit-content;
+  padding: 3rem;
 }
 
 .cvPreviewBody{
