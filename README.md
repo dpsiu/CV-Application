@@ -1,8 +1,33 @@
-# React + Vite
+# CV Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This CV application project was created as part of The Odin Project's curriculum. It serves as a practical exercise for applying React, state management, and component structuring.
 
-Currently, two official plugins are available:
+## Demo Link
+[CV Creator Application](https://beamish-chaja-2d569e.netlify.app/)
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The CV application allows users to input and display general information, educational experiences, and practical work experiences. It follows best practices and principles of React development.
+
+## Features
+
+- **General Information:** Users can add their name, email, and phone number.
+
+- **Educational Experience:** Users can input details about their school, field of study, and study dates.
+
+- **Practical Experience:** Users can add information about their work experiences, including company name, position, responsibilities, and employment dates.
+
+## Technologies Used
+
+- React
+- HTML
+- CSS
+- JavaScript
+
+## Next Steps
+- Create a curated mobile experience
+- Add the option to select accent colors to the user's preference
+- Make the document printable
+
+## Lessons Learned/ Takeaways
+- As someone who applied the concept of components, their efficiency, and application through UX design and Figma, React was a joy to learn and felt intuitive.
+- 
