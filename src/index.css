@@ -199,10 +199,8 @@ button {
 }
 
 .skillsRow {
-  max-width: 75%;
   align-self: center;
 }
-
 
 .skillsList,
 .categoryList {
@@ -252,7 +250,7 @@ button {
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-gap: 3rem;
-
+  background-color: clr;
 }
 
 .editor {
@@ -264,13 +262,16 @@ button {
   overflow-y: auto;
   overflow-x: hidden;
   height: 1050px;
-  width: fit-content;
+  width: 30vw;
   padding: 3rem;
 }
 
 .cvPreviewBody{
   display: flex;
   justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  flex: 1;
 }
 
 .cvPreview {
