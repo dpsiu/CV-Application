@@ -6,7 +6,7 @@ import ExperienceForm from "./components/ExperienceForm";
 import ExperienceList from "./components/ExperienceList";
 import Biography from "./components/Biography";
 import BiographyPreview from "./components/BiographyPreview";
-import Footer from "./components/Footer"
+import Footer from "./components/Footer";
 
 export default function App() {
   const [fullName, setFullName] = useState("Name");
@@ -15,14 +15,17 @@ export default function App() {
   const [website, setWebsite] = useState("Website");
   const [phone, setPhone] = useState("Phone");
 
-  const [school, setSchool] = useState("SCHOOL");
-  const [degree, setDegree] = useState("DEGREE");
+  const [school, setSchool] = useState("UNIVERSITY");
+  const [degree, setDegree] = useState("Degree");
   const [startDate, setStartDate] = useState("Start Date");
   const [endDate, setEndDate] = useState("End Date");
   const [description, setDescription] = useState("Description");
 
   const [newSkill, setNewSkill] = useState([]);
-  const [skillsList, setSkillsList] = useState([]);
+  const [skillsList, setSkillsList] = useState([
+    { title: "Category", id: crypto.randomUUID(), className: "category" },
+    { title: "Skill", id: crypto.randomUUID(), className: "skill" },
+  ]);
 
   const exampleExperience = {
     company: "EXAMPLE - COMPANY A",
@@ -247,7 +250,6 @@ export default function App() {
               {skillsList
                 .filter((skill) => skill.className === "skill")
                 .map((skill) => (
-                  <>
                     <div className="skillsListItem" key={skill.id}>
                       <div>{skill.title}</div>
                       <img
@@ -256,7 +258,6 @@ export default function App() {
                         onClick={() => deleteSkill(skill.id)}
                       />
                     </div>
-                  </>
                 ))}
             </div>
           </form>
@@ -293,13 +294,11 @@ export default function App() {
             </div>
             <div className="skillsPreview">
               <h3>SKILLS</h3>
-              {skillsList.map((skill) => {
-                return (
-                  <div className={skill.className} key={crypto.randomUUID()}>
-                    {skill.title}
-                  </div>
-                );
-              })}
+              {skillsList.map((skill) => (
+                <div className={skill.className} key={skill.id}>
+                  {skill.title}
+                </div>
+              ))}
             </div>
           </div>
         </div>
