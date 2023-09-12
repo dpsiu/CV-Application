@@ -217,11 +217,6 @@ button {
   margin-top: 1rem;
 }
 
-/* Category + adds Categories. Show category list. */
-/* Skills + adds Skills. Show skills list.  */
-/* Cat/Skills can be edited in the cat/skills list respectively */
-/* Will change dynamically on preview. */
-
 .skillsList h3,
 .categoryList h3 {
   width: 100%;
@@ -369,6 +364,10 @@ button {
   font-weight: 700;
   letter-spacing: 2px;
   font-size: .9rem;
+}
+
+.skill {
+  font-size: .8rem;
 }
 
 img .form-row:focus {
