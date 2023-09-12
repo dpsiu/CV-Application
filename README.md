@@ -3,7 +3,7 @@
 This CV application project was created as part of The Odin Project's curriculum. It serves as a practical exercise for applying React, state management, and component structuring.
 
 ## Demo Link
-[CV Creator Application](https://beamish-chaja-2d569e.netlify.app/)
+[CV Creator Application](https://denver-siu-cv-application.netlify.app/)
 ## Overview
 
 The CV application allows users to input and display general information, educational experiences, and practical work experiences. It follows best practices and principles of React development.
