@@ -8,6 +8,11 @@ This CV application project was created as part of The Odin Project's curriculum
 
 The CV application allows users to input general information, educational experiences, and practical work experiences which is then rendered on the right side as an example.
 
+## Screenshots
+![Landing page example. You first see the personal and education details.](https://github.com/dpsiu/CV-Application/blob/main/Layer%201.jpg)
+![An example of filling out an experience section which is then rendered to the preview section on the right.](https://github.com/dpsiu/CV-Application/blob/main/Layer%202.jpg)
+![Example of adding category and skills to the skills section.](https://github.com/dpsiu/CV-Application/blob/main/Layer%204.jpg)
+
 ## Features
 
 - **General Information:** Users can add their name, email, and phone number.
