@@ -8,17 +8,19 @@ import BiographyPreview from "./components/BiographyPreview";
 import Footer from "./components/Footer";
 
 export default function App() {
-  const [fullName, setFullName] = useState("Name");
-  const [occupation, setOccupation] = useState("Occupation");
-  const [email, setEmail] = useState("Email");
+  const [fullName, setFullName] = useState("John Doe");
+  const [occupation, setOccupation] = useState("Software Developer");
+  const [email, setEmail] = useState("janedoe@email.com");
   const [website, setWebsite] = useState("Website");
-  const [phone, setPhone] = useState("Phone");
+  const [phone, setPhone] = useState("(123) 456-7890");
 
-  const [school, setSchool] = useState("UNIVERSITY");
+  const [school, setSchool] = useState("ABC University");
   const [degree, setDegree] = useState("Degree");
   const [startDate, setStartDate] = useState("Start Date");
   const [endDate, setEndDate] = useState("End Date");
-  const [description, setDescription] = useState("Description");
+  const [description, setDescription] = useState(
+    "Tip: In this section, provide details about your academic journey. Include your university or school's name, your degree or major, and the dates you attended. Mention any honors, relevant coursework, or academic achievements if applicable."
+  );
 
   const [newSkill, setNewSkill] = useState([]);
   const [skillsList, setSkillsList] = useState([
@@ -27,16 +29,16 @@ export default function App() {
   ]);
 
   const exampleExperience = {
-    company: "EXAMPLE - COMPANY A",
-    position: "UX DESIGNER",
-    startDate: "JAN 2022",
-    endDate: "DEC 2023",
+    company: "Company Name",
+    position: "Your Job Title",
+    startDate: "Month/Year Start",
+    endDate: "Month/Year End",
     description1:
-      "Design the internal administration tool and customer-facing application.",
+      "Provide Quantifiable Achievements: Describe an achievement at your role with quantifiable metrics.",
     description2:
-      "Build a robust, data heavy CRM by creating a cohesive system across two external systems.",
+      "Highlight Responsibilities: Clearly outline your main responsibilities and tasks.",
     description3:
-      "Streamline and optimize workflows for product and design utilizing reasearch, wireframes, and mockups.",
+      "Use Action Words: Begin your descriptions with action verbs to make them more engaging.",
     id: crypto.randomUUID(),
   };
 
@@ -196,11 +198,12 @@ export default function App() {
               {experiences.map((experience) => (
                 <div className="skillsListItem" key={experience.id}>
                   <div>{experience.company}</div>
-                  <img
-                    src="./icons/close.svg"
-                    alt=""
+                  <span
                     onClick={() => handleDeleteExperience(experience.id)}
-                  />
+                    className="material-symbols-outlined"
+                  >
+                    close
+                  </span>
                 </div>
               ))}
             </div>
@@ -216,7 +219,12 @@ export default function App() {
                 name="category"
                 id="category"
               />
-              <img src="./icons/plus.svg" alt="" onClick={handleCategoryAdd} />
+              <span
+                onClick={handleCategoryAdd}
+                className="material-symbols-outlined"
+              >
+                add
+              </span>
             </div>
             <div className="form-row skillsRow">
               <label htmlFor="skill">Skill</label>
@@ -227,7 +235,12 @@ export default function App() {
                 name="skill"
                 id="skill"
               />
-              <img src="./icons/plus.svg" alt="" onClick={handleSkillAdd} />
+              <span
+                onClick={handleSkillAdd}
+                className="material-symbols-outlined"
+              >
+                add
+              </span>
             </div>
             <div className="categoryList list">
               <h3>Category</h3>
@@ -236,11 +249,12 @@ export default function App() {
                 .map((skill) => (
                   <div className="skillsListItem" key={skill.id}>
                     <div>{skill.title}</div>
-                    <img
-                      src="./icons/close.svg"
-                      alt=""
+                    <span
                       onClick={() => deleteSkill(skill.id)}
-                    />
+                      className="material-symbols-outlined"
+                    >
+                      close
+                    </span>
                   </div>
                 ))}
             </div>
@@ -249,14 +263,15 @@ export default function App() {
               {skillsList
                 .filter((skill) => skill.className === "skill")
                 .map((skill) => (
-                    <div className="skillsListItem" key={skill.id}>
-                      <div>{skill.title}</div>
-                      <img
-                        src="./icons/close.svg"
-                        alt=""
-                        onClick={() => deleteSkill(skill.id)}
-                      />
-                    </div>
+                  <div className="skillsListItem" key={skill.id}>
+                    <div>{skill.title}</div>
+                    <span
+                      onClick={() => deleteSkill(skill.id)}
+                      className="material-symbols-outlined"
+                    >
+                      close
+                    </span>
+                  </div>
                 ))}
             </div>
           </form>

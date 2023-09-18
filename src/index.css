@@ -36,6 +36,7 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar-track {
@@ -52,6 +53,7 @@ scrollbar-thumb {
 
 scrollbar-thumb:hover {
   background: #555;
+  cursor: pointer;
 }
 
 h1 {
@@ -160,6 +162,7 @@ button {
 
 .deleteBtn:hover {
   background-color: var(--color-red);
+  cursor: pointer;
 }
 .addBtn {
   background-color: var(--color-dark);
@@ -167,6 +170,7 @@ button {
 }
 .addBtn:hover {
   background-color: var(--color-main);
+  cursor: pointer;
 }
 
 .dates {
@@ -186,17 +190,6 @@ button {
 }
 
 /* Skills */
-
-.form-row img {
-  width: 2rem;
-  border-radius: .4rem;
-  background-color: var(--color-main-light);
-  margin: 0px 1rem;
-}
-
-.form-row img:hover {
-  background-color: var(--color-main);
-}
 
 .skillsRow {
   align-self: center;
@@ -230,19 +223,22 @@ button {
   margin: .5rem;
   letter-spacing: normal;
 }
-.skillsListItem img,
-.categoryListItem img{
+.skillsListItem span,
+.form-row span {
   height: 1.5rem;
-  filter: invert(100%);
   margin-left: 1rem;
   border: rgba(255, 255, 255, 0) 2px solid;
   border-radius: .4rem;
+  background-color: var(--color-main-light);
+  padding: .2rem;
 }
 
-.skillsListItem img:hover, 
-.categoryListItem img:hover {
-  border: black 2px solid;
+.skillsListItem span:hover,
+.form-row span:hover {
+  border: rgb(255, 255, 255) 2px solid;
+  cursor: pointer;
 }
+
 
 /* CV Preview */
 
@@ -289,7 +285,6 @@ button {
   grid-template-columns: 3fr 1fr;
   grid-template-rows: 1fr 1fr 34fr;
   grid-gap: 1rem;
-
 }
 
 /* Bio preview */
@@ -371,10 +366,6 @@ button {
   font-size: .8rem;
 }
 
-img .form-row:focus {
-  border: blue solid 2px;
-}
-
 .startDate,
 .endDate,
 .dates {
@@ -442,6 +433,7 @@ img .form-row:focus {
 
 .footer a:hover {
   color: #6bcda2;
+  cursor: pointer;
 }
 
 .footer img {
@@ -455,7 +447,13 @@ img .form-row:focus {
   margin: 0px 2rem 0px 0rem;
 }
 
-
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -464,6 +462,7 @@ img .form-row:focus {
   }
   a:hover {
     color: #747bff;
+    cursor: pointer;
   }
 
 }
